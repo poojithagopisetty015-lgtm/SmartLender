@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Lender</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🏦 Smart Lender</h1>
+<p>AI-Based Loan Approval Prediction System</p>
+
+<form action="/predict" method="POST">
+
+<div class="input-box">
+<label>Applicant Name</label>
+<input type="text" name="name" placeholder="Enter Name" required>
+</div>
+
+<div class="input-box">
+<label>Gender</label>
+<select name="gender">
+<option>Male</option>
+<option>Female</option>
+</select>
+</div>
+
+<div class="input-box">
+<label>Age</label>
+<input type="number" name="age" required>
+</div>
+
+<div class="input-box">
+<label>Employment Type</label>
+<select name="employment">
+<option>Salaried</option>
+<option>Self Employed</option>
+<option>Business</option>
+</select>
+</div>
+
+<div class="input-box">
+<label>Monthly Income</label>
+<input type="number" name="income" required>
+</div>
+
+<div class="input-box">
+<label>Loan Amount</label>
+<input type="number" name="loan" required>
+</div>
+
+<div class="input-box">
+<label>Credit History</label>
+<select name="credit">
+<option>Good</option>
+<option>Bad</option>
+</select>
+</div>
+
+<button type="submit">Predict Loan</button>
+
+</form>
+
+{% if status %}
+
+<div class="result">
+
+<h2>Prediction Result</h2>
+
+<h3 style="color:{{color}}">
+{{status}}
+</h3>
+
+<p>{{reason}}</p>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
